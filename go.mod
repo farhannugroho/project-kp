@@ -5,8 +5,8 @@ go 1.16
 // +heroku goVersion go1.16
 
 require (
-	github.com/gin-contrib/cors v1.3.1 // indirect
-	github.com/gin-gonic/gin v1.7.4 // indirect
+	github.com/gin-contrib/cors v1.3.1
+	github.com/gin-gonic/gin v1.7.4
 	github.com/go-playground/validator/v10 v10.9.0 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
@@ -15,9 +15,8 @@ require (
 	github.com/ugorji/go v1.2.6 // indirect
 	golang.org/x/crypto v0.0.0-20211108221036-ceb1ce70b4fa // indirect
 	golang.org/x/sys v0.0.0-20211113001501-0c823b97ae02 // indirect
-	golang.org/x/text v0.3.7 // indirect
 	google.golang.org/protobuf v1.27.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gorm.io/driver/postgres v1.2.2
-	gorm.io/gorm v1.22.3 // indirect
+	gorm.io/gorm v1.22.3
 )

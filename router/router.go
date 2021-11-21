@@ -1,6 +1,7 @@
 package router
 
 import (
+	"net/http"
 	"project-kp/router/endpoint"
 
 	"github.com/gin-contrib/cors"
@@ -18,7 +19,10 @@ func InitRouter() *gin.Engine {
 	}))
 
 	r.GET("/", func(c *gin.Context) {
-
+		c.JSON(http.StatusOK, gin.H{
+			"status":   "OK",
+			"base_url": "https://warehouse-kp.herokuapp.com/v1/",
+		})
 	})
 
 	v1 := r.Group("/v1")

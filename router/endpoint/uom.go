@@ -2,31 +2,38 @@ package endpoint
 
 import (
 	"errors"
-	"github.com/gin-gonic/gin"
-	"gorm.io/gorm"
 	"net/http"
 	"project-kp/config"
 	"project-kp/model"
+	"project-kp/util"
+
+	"github.com/gin-gonic/gin"
+	"gorm.io/gorm"
 )
 
 func GetAllUom(c *gin.Context) {
 	var list []model.Uom
 	config.DB.Find(&list)
-	c.JSON(http.StatusOK, list)
+	if err := config.DB.Find(&list).Error; err != nil {
+		util.BadResponse(c, err)
+		return
+	}
+
+	util.GoodResponse(c, list)
 }
 
 func CreateUom(c *gin.Context) {
 	var obj model.Uom
 	if err := c.ShouldBindJSON(&obj); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		util.BadResponse(c, err)
 		return
 	}
 
 	if result := config.DB.Create(&obj); result.Error != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": result.Error})
+		util.BadResponse(c, result.Error)
 		return
 	}
-	c.JSON(http.StatusCreated, obj)
+	util.GoodResponse(c, obj)
 }
 
 func DeleteUom(c *gin.Context) {
