@@ -1,5 +1,5 @@
 package model
 
 type Model struct {
-	ID		uint `gorm:"primarykey" json:"id"`
+	ID uint `gorm:"primarykey" json:"id"`
 }

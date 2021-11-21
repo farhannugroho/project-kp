@@ -1,12 +1,21 @@
 package router
 
 import (
-	"github.com/gin-gonic/gin"
 	"project-kp/router/endpoint"
+
+	"github.com/gin-contrib/cors"
+	"github.com/gin-gonic/gin"
 )
 
 func InitRouter() *gin.Engine {
 	r := gin.Default()
+
+	// Enable CORS
+	r.Use(cors.New(cors.Config{
+		AllowOrigins: []string{"*"},
+		AllowMethods: []string{"*"},
+		AllowHeaders: []string{"*"},
+	}))
 
 	r.GET("/", func(c *gin.Context) {
 
